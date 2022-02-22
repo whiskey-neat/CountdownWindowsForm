@@ -50,12 +50,15 @@ namespace CountdownWindowsForm
             this.txtBox_GoalNumber = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.lbl_YourSubHeading = new System.Windows.Forms.Label();
-            this.txtBox_YourSub = new System.Windows.Forms.TextBox();
+            this.txtBox_Submission = new System.Windows.Forms.TextBox();
             this.rdBtn_Easy = new System.Windows.Forms.RadioButton();
             this.lbl_SelectDifficulty = new System.Windows.Forms.Label();
             this.rdBtn_Hard = new System.Windows.Forms.RadioButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.lbl_currentHighScore_Hard = new System.Windows.Forms.Label();
+            this.toolTip_YourSub = new System.Windows.Forms.ToolTip(this.components);
+            this.btn_SubmitNum = new System.Windows.Forms.Button();
+            this.lbl_Test = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_CountdownLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +72,6 @@ namespace CountdownWindowsForm
             this.lbl_enterUsername.Size = new System.Drawing.Size(171, 29);
             this.lbl_enterUsername.TabIndex = 0;
             this.lbl_enterUsername.Text = "Enter Username:";
-            this.lbl_enterUsername.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtBox_EnterUsername
             // 
@@ -260,27 +262,29 @@ namespace CountdownWindowsForm
             this.lbl_YourSubHeading.AutoSize = true;
             this.lbl_YourSubHeading.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_YourSubHeading.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lbl_YourSubHeading.Location = new System.Drawing.Point(851, 231);
+            this.lbl_YourSubHeading.Location = new System.Drawing.Point(759, 230);
             this.lbl_YourSubHeading.Name = "lbl_YourSubHeading";
-            this.lbl_YourSubHeading.Size = new System.Drawing.Size(257, 45);
+            this.lbl_YourSubHeading.Size = new System.Drawing.Size(427, 45);
             this.lbl_YourSubHeading.TabIndex = 17;
-            this.lbl_YourSubHeading.Text = "Your Submission";
+            this.lbl_YourSubHeading.Text = "Enter Your Submission Here:";
             this.lbl_YourSubHeading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl_YourSubHeading.Visible = false;
             // 
-            // txtBox_YourSub
+            // txtBox_Submission
             // 
-            this.txtBox_YourSub.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtBox_YourSub.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtBox_YourSub.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBox_YourSub.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtBox_YourSub.Location = new System.Drawing.Point(845, 289);
-            this.txtBox_YourSub.MaxLength = 3;
-            this.txtBox_YourSub.Name = "txtBox_YourSub";
-            this.txtBox_YourSub.Size = new System.Drawing.Size(275, 65);
-            this.txtBox_YourSub.TabIndex = 18;
-            this.txtBox_YourSub.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtBox_YourSub.Visible = false;
+            this.txtBox_Submission.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtBox_Submission.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtBox_Submission.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtBox_Submission.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBox_Submission.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtBox_Submission.Location = new System.Drawing.Point(845, 289);
+            this.txtBox_Submission.MaxLength = 3;
+            this.txtBox_Submission.Name = "txtBox_Submission";
+            this.txtBox_Submission.Size = new System.Drawing.Size(275, 65);
+            this.txtBox_Submission.TabIndex = 18;
+            this.txtBox_Submission.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip_YourSub.SetToolTip(this.txtBox_Submission, "Enter your number here.\r\n");
+            this.txtBox_Submission.Visible = false;
             // 
             // rdBtn_Easy
             // 
@@ -342,18 +346,44 @@ namespace CountdownWindowsForm
             this.lbl_currentHighScore_Hard.TabIndex = 22;
             this.lbl_currentHighScore_Hard.Text = "Hard Current High Score:";
             // 
+            // btn_SubmitNum
+            // 
+            this.btn_SubmitNum.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_SubmitNum.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_SubmitNum.Location = new System.Drawing.Point(927, 370);
+            this.btn_SubmitNum.Name = "btn_SubmitNum";
+            this.btn_SubmitNum.Size = new System.Drawing.Size(120, 43);
+            this.btn_SubmitNum.TabIndex = 24;
+            this.btn_SubmitNum.Text = "Submit";
+            this.btn_SubmitNum.UseVisualStyleBackColor = true;
+            this.btn_SubmitNum.Visible = false;
+            this.btn_SubmitNum.Click += new System.EventHandler(this.btn_SubmitNum_Click);
+            // 
+            // lbl_Test
+            // 
+            this.lbl_Test.AutoSize = true;
+            this.lbl_Test.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Test.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lbl_Test.Location = new System.Drawing.Point(759, 597);
+            this.lbl_Test.Name = "lbl_Test";
+            this.lbl_Test.Size = new System.Drawing.Size(0, 45);
+            this.lbl_Test.TabIndex = 25;
+            this.lbl_Test.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MidnightBlue;
             this.ClientSize = new System.Drawing.Size(1413, 802);
+            this.Controls.Add(this.lbl_Test);
+            this.Controls.Add(this.btn_SubmitNum);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lbl_currentHighScore_Hard);
             this.Controls.Add(this.rdBtn_Hard);
             this.Controls.Add(this.lbl_SelectDifficulty);
             this.Controls.Add(this.rdBtn_Easy);
-            this.Controls.Add(this.txtBox_YourSub);
+            this.Controls.Add(this.txtBox_Submission);
             this.Controls.Add(this.lbl_YourSubHeading);
             this.Controls.Add(this.txtBox_GoalNumber);
             this.Controls.Add(this.lbl_GoalNumberHeading);
@@ -375,7 +405,6 @@ namespace CountdownWindowsForm
             this.Name = "form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Countdown Game";
-            this.Load += new System.EventHandler(this.form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBox_CountdownLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -407,12 +436,15 @@ namespace CountdownWindowsForm
         private System.Windows.Forms.TextBox txtBox_GoalNumber;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Label lbl_YourSubHeading;
-        private System.Windows.Forms.TextBox txtBox_YourSub;
+        private System.Windows.Forms.TextBox txtBox_Submission;
         private System.Windows.Forms.RadioButton rdBtn_Easy;
         private System.Windows.Forms.Label lbl_SelectDifficulty;
         private System.Windows.Forms.RadioButton rdBtn_Hard;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label lbl_currentHighScore_Hard;
+        private System.Windows.Forms.ToolTip toolTip_YourSub;
+        private System.Windows.Forms.Button btn_SubmitNum;
+        private System.Windows.Forms.Label lbl_Test;
     }
 }
 
