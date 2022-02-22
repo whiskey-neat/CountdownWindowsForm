@@ -177,6 +177,14 @@ namespace CountdownWindowsForm
             int goalNumber2 = Int32.Parse(txtBox_GoalNumber.Text); // CONVERTS GOAL NUMBER BACK TO INTEGER
             string yourScoreIs = "Your Score is: ";
 
+            int highestNumber = Math.Max(userNumber, goalNumber2);
+            int lowestNumber = Math.Min(userNumber, goalNumber2);
+
+            int userScoreInt = highestNumber - lowestNumber;
+
+            txtBox_DisplayScore.Text = yourScoreIs + userScoreInt.ToString();
+
+            /*
             if (userNumber <= goalNumber2)
             {
                 txtBox_DisplayScore.Text = yourScoreIs + (goalNumber2 - userNumber).ToString();
@@ -186,6 +194,7 @@ namespace CountdownWindowsForm
             {
                 txtBox_DisplayScore.Text = yourScoreIs + (userNumber - goalNumber2).ToString();
             }
+            */
         }
     }
 }
