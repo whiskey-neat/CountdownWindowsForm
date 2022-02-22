@@ -22,7 +22,7 @@ namespace CountdownWindowsForm.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace CountdownWindowsForm.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CountdownWindowsForm.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace CountdownWindowsForm.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace CountdownWindowsForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon countdownClockSquare {
+        public static System.Drawing.Icon countdownClockSquare {
             get {
                 object obj = ResourceManager.GetObject("countdownClockSquare", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
@@ -73,7 +73,7 @@ namespace CountdownWindowsForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        internal static System.IO.UnmanagedMemoryStream CountdownTheme_Full {
+        public static System.IO.UnmanagedMemoryStream CountdownTheme_Full {
             get {
                 return ResourceManager.GetStream("CountdownTheme_Full", resourceCulture);
             }
@@ -82,7 +82,7 @@ namespace CountdownWindowsForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        internal static System.IO.UnmanagedMemoryStream CountdownTheme_Trim {
+        public static System.IO.UnmanagedMemoryStream CountdownTheme_Trim {
             get {
                 return ResourceManager.GetStream("CountdownTheme_Trim", resourceCulture);
             }
@@ -91,10 +91,19 @@ namespace CountdownWindowsForm.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CountdownTitle {
+        public static System.Drawing.Bitmap CountdownTitle {
             get {
                 object obj = ResourceManager.GetObject("CountdownTitle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string highscores_txt {
+            get {
+                return ResourceManager.GetString("highscores.txt", resourceCulture);
             }
         }
     }

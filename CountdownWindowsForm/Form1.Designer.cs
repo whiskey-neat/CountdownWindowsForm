@@ -57,8 +57,8 @@ namespace CountdownWindowsForm
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.lbl_currentHighScore_Hard = new System.Windows.Forms.Label();
             this.toolTip_YourSub = new System.Windows.Forms.ToolTip(this.components);
+            this.txtBox_DisplayScore = new System.Windows.Forms.TextBox();
             this.btn_SubmitNum = new System.Windows.Forms.Button();
-            this.lbl_DisplayScore = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_CountdownLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -278,7 +278,7 @@ namespace CountdownWindowsForm
             this.txtBox_Submission.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBox_Submission.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtBox_Submission.Location = new System.Drawing.Point(845, 289);
-            this.txtBox_Submission.MaxLength = 3;
+            this.txtBox_Submission.MaxLength = 4;
             this.txtBox_Submission.Name = "txtBox_Submission";
             this.txtBox_Submission.Size = new System.Drawing.Size(275, 65);
             this.txtBox_Submission.TabIndex = 18;
@@ -347,6 +347,22 @@ namespace CountdownWindowsForm
             this.lbl_currentHighScore_Hard.TabIndex = 22;
             this.lbl_currentHighScore_Hard.Text = "Hard Current High Score:";
             // 
+            // txtBox_DisplayScore
+            // 
+            this.txtBox_DisplayScore.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtBox_DisplayScore.BackColor = System.Drawing.Color.MidnightBlue;
+            this.txtBox_DisplayScore.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBox_DisplayScore.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtBox_DisplayScore.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBox_DisplayScore.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.txtBox_DisplayScore.Location = new System.Drawing.Point(767, 513);
+            this.txtBox_DisplayScore.MaxLength = 3;
+            this.txtBox_DisplayScore.Name = "txtBox_DisplayScore";
+            this.txtBox_DisplayScore.Size = new System.Drawing.Size(435, 58);
+            this.txtBox_DisplayScore.TabIndex = 26;
+            this.txtBox_DisplayScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip_YourSub.SetToolTip(this.txtBox_DisplayScore, "Enter your number here.\r\n");
+            // 
             // btn_SubmitNum
             // 
             this.btn_SubmitNum.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -360,24 +376,13 @@ namespace CountdownWindowsForm
             this.btn_SubmitNum.Visible = false;
             this.btn_SubmitNum.Click += new System.EventHandler(this.btn_SubmitNum_Click);
             // 
-            // lbl_DisplayScore
-            // 
-            this.lbl_DisplayScore.AutoSize = true;
-            this.lbl_DisplayScore.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_DisplayScore.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lbl_DisplayScore.Location = new System.Drawing.Point(643, 534);
-            this.lbl_DisplayScore.Name = "lbl_DisplayScore";
-            this.lbl_DisplayScore.Size = new System.Drawing.Size(0, 45);
-            this.lbl_DisplayScore.TabIndex = 25;
-            this.lbl_DisplayScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MidnightBlue;
             this.ClientSize = new System.Drawing.Size(1413, 802);
-            this.Controls.Add(this.lbl_DisplayScore);
+            this.Controls.Add(this.txtBox_DisplayScore);
             this.Controls.Add(this.btn_SubmitNum);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lbl_currentHighScore_Hard);
@@ -445,7 +450,7 @@ namespace CountdownWindowsForm
         private System.Windows.Forms.Label lbl_currentHighScore_Hard;
         private System.Windows.Forms.ToolTip toolTip_YourSub;
         private System.Windows.Forms.Button btn_SubmitNum;
-        private System.Windows.Forms.Label lbl_DisplayScore;
+        private System.Windows.Forms.TextBox txtBox_DisplayScore;
     }
 }
 

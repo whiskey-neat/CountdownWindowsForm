@@ -19,18 +19,15 @@ namespace CountdownWindowsForm
             InitializeComponent();
         }
 
-        /*--------------------------------------------------------------------------------------------------------------------------------
-        ///                                                             EXIT BUTTON
-        ---------------------------------------------------------------------------------------------------------------------------------*/
+
+        /// EXIT BUTTON
         private void btn_ExitProgram_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
         }
+        
 
-
-        /*--------------------------------------------------------------------------------------------------------------------------------
-        ///                                                             HELP BUTTON
-        ---------------------------------------------------------------------------------------------------------------------------------*/
+        /// HELP BUTTON
         private void button2_Click(object sender, EventArgs e)
         {
             MessageBox.Show(
@@ -58,9 +55,7 @@ namespace CountdownWindowsForm
                 "\nThats it! Your score will be logged. Have fun :D");
         }
 
-        /*--------------------------------------------------------------------------------------------------------------------------------
-        ///                                                             MAIN PROGRAM
-        ---------------------------------------------------------------------------------------------------------------------------------*/
+        /// MAIN PROGRAM
 
         // SET EnterUsername TO EMPTY
         public void empty()
@@ -86,9 +81,9 @@ namespace CountdownWindowsForm
             }
         }
 
-        /*-------------------------------------
-         -->  WHEN LETS GO BUTTON IS PRESSED
-        -------------------------------------*/
+
+        ///  WHEN LETS GO BUTTON IS PRESSED
+        
         private async void button1_Click(object sender, EventArgs e)
         {
             ///  IF A DIFFICULTY IS SELECTED
@@ -151,21 +146,20 @@ namespace CountdownWindowsForm
                     lbl_GoalNumberHeading.Visible = true;
                     txtBox_GoalNumber.Visible = true;
 
+                    lbl_YourSubHeading.Visible = true;
+                    txtBox_Submission.Visible = true;
+                    btn_SubmitNum.Visible = true;
+
                     await Task.Delay(TimeSpan.FromSeconds(2));
 
                     SoundPlayer timer = new SoundPlayer(CountdownWindowsForm.Properties.Resources.CountdownTheme_Full);
                     timer.Play();
 
                     await Task.Delay(TimeSpan.FromSeconds(30));
-
-                    lbl_YourSubHeading.Visible = true;
-                    txtBox_Submission.Visible = true;
-                    btn_SubmitNum.Visible = true;
                 }
 
-                /*------------------------------------
                 ///  IF EASY DIFFICULTY IS SELECTED
-                -------------------------------------*/
+                
 
                 else if (rdBtn_Easy.Checked)
                 {
@@ -185,12 +179,12 @@ namespace CountdownWindowsForm
 
             if (userNumber <= goalNumber2)
             {
-                lbl_DisplayScore.Text = yourScoreIs + (goalNumber2 - userNumber).ToString();
+                txtBox_DisplayScore.Text = yourScoreIs + (goalNumber2 - userNumber).ToString();
             }
 
             else if (goalNumber2 < userNumber)
             {
-                lbl_DisplayScore.Text = yourScoreIs + (userNumber - goalNumber2).ToString();
+                txtBox_DisplayScore.Text = yourScoreIs + (userNumber - goalNumber2).ToString();
             }
         }
     }
