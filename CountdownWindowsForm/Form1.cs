@@ -77,96 +77,79 @@ namespace CountdownWindowsForm
             }
         }
 
-        /*------------------------------------
+        // SUBMIT BUTTON IS PRESSSED WHEN ENTER KEY IS PRESSED IN SUBMISSION TEXTBOX
+        private void txtBox_Submission_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_SubmitNum.PerformClick();
+            }
+        }
+
+        /*-------------------------------------
          -->  WHEN LETS GO BUTTON IS PRESSED
         -------------------------------------*/
         private async void button1_Click(object sender, EventArgs e)
         {
-
-
-            /*------------------------------------
-            ///  IF ANY DIFFICULTY IS SELECTED
-            -------------------------------------*/
-
+            ///  IF A DIFFICULTY IS SELECTED
             if (rdBtn_Easy.Checked | rdBtn_Hard.Checked)
             {
+ 
+                string playerUsername = txtBox_EnterUsername.Text; // STORES USERNAME IN VARIABLE
 
-                // STORES USERNAME IN VARIABLE 
-                string playerUsername = txtBox_EnterUsername.Text;
+                SoundPlayer letsgo = new SoundPlayer(CountdownWindowsForm.Properties.Resources.CountdownTheme_Trim);
+                letsgo.Play();
 
-                SoundPlayer player = new SoundPlayer(CountdownWindowsForm.Properties.Resources.CountdownTheme_Trim);
-                player.Play();
+                lbl_currentPlayer.Text = ("GET READY ") + playerUsername; // DISPLAYS NAME OF CURRENT PLAYER
 
-                // System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"CountdownTheme_Trim.wav");
-                // player.Play();
-
-
-                // DISPLAYS NAME OF CURRENT PLAYER
-                lbl_currentPlayer.Text = ("GET READY ") + playerUsername;
-
-
-                //CLEARS TEXT FROM EnterUsername BOX
-                empty();
+                empty(); // CLEARS TEXT FROM EnterUsername BOX
 
                 await Task.Delay(TimeSpan.FromSeconds(5));
             }
+       
 
-
-            /*-------------------------------------       
             ///  IF A DIFFICULTY IS NOT SELECTED
-            --------------------------------------*/
-
             else
             {
                 MessageBox.Show(" YOU MUST SELECT A DIFFICULTY ");
             }
 
 
-                /*-----------------------------------
                 ///  IF HARD DIFFICULTY IS SELECTED
-                ------------------------------------*/
-
                 if (rdBtn_Hard.Checked)
-            {
-
-                    /// MAKES NUMBERS VISIBLE AFTER 5 SECONDS
-                    lbl_YourNumbersHeading.Visible = true;
-                    txtBox_YourNumbersDisplay.Visible = true;
-
-
+                {
+                    
                     /// CREATES RANDOM NUMBERS
                     Random rnd = new Random();
 
                     string space = " , ";
                     int nums;
 
-
-                    // txtBox_YourNumbersDisplay.Text = nums.ToString();
-                    for (int i = 1; i <= 3; i++)
+                    for (int i = 1; i <= 3; i++)  // GENERATE 3 SMALL NUMBERS
                     {
                         nums = rnd.Next(1, 10);
                         txtBox_YourNumbersDisplay.Text = txtBox_YourNumbersDisplay.Text + nums.ToString() + space;
                     }
 
-                    for (int i = 1; i <= 2; i++)
+                    for (int i = 1; i <= 2; i++)  // GENERATE 2 BIG NUMBERS
                     {
                         nums = rnd.Next(11, 100);
                         txtBox_YourNumbersDisplay.Text = txtBox_YourNumbersDisplay.Text + nums.ToString() + space;
 
                         if (i == 2)
                         {
-                            nums = rnd.Next(11, 100);
+                            nums = rnd.Next(11, 100);  // GENERATE 3RD BIG NUMBER AND FORMATS STRING PROPERLY
                             txtBox_YourNumbersDisplay.Text = txtBox_YourNumbersDisplay.Text + nums.ToString();
                         }
                     }
-                
-                    /// MAKE AND DISPLAY RANDOM GOAL NUMBER
-
-                    lbl_GoalNumberHeading.Visible = true;
-                    txtBox_GoalNumber.Visible = true;
 
                     int goalNumber = rnd.Next(101, 999);
                     txtBox_GoalNumber.Text = goalNumber.ToString();
+
+                    lbl_YourNumbersHeading.Visible = true;
+                    txtBox_YourNumbersDisplay.Visible = true;
+                    lbl_GoalNumberHeading.Visible = true;
+                    txtBox_GoalNumber.Visible = true;
 
                     await Task.Delay(TimeSpan.FromSeconds(2));
 
@@ -191,19 +174,24 @@ namespace CountdownWindowsForm
         }
 
         // SUBMIT BUTTON IS PRESSSED WHEN ENTER KEY IS PRESSED IN SUBMISSION TEXTBOX
-        private void txtBox_Submission_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                btn_SubmitNum.PerformClick();
-            }
-        }
 
+        // USER SUBMITS THEIR NUMBER
         private void btn_SubmitNum_Click(object sender, EventArgs e)
         {
-            //stores user number in string
-            string userSub = txtBox_Submission.Text;
-            lbl_Test.Text = userSub;
+            string userSub = txtBox_Submission.Text;  // STORES USER SUBMITTED NUMBER IN STRING
+            int userNumber = Int32.Parse(userSub);    // CONVERTS STRING TO USABLE INTEGER
+            int goalNumber2 = Int32.Parse(txtBox_GoalNumber.Text); // CONVERTS GOAL NUMBER BACK TO INTEGER
+            string yourScoreIs = "Your Score is: ";
+
+            if (userNumber <= goalNumber2)
+            {
+                lbl_DisplayScore.Text = yourScoreIs + (goalNumber2 - userNumber).ToString();
+            }
+
+            else if (goalNumber2 < userNumber)
+            {
+                lbl_DisplayScore.Text = yourScoreIs + (userNumber - goalNumber2).ToString();
+            }
         }
     }
 }
