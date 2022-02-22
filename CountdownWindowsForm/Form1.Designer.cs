@@ -171,7 +171,6 @@ namespace CountdownWindowsForm
             this.lbl_currentPlayer.Size = new System.Drawing.Size(851, 50);
             this.lbl_currentPlayer.TabIndex = 1;
             this.lbl_currentPlayer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbl_currentPlayer.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // btn_ExitProgram
             // 
@@ -235,7 +234,6 @@ namespace CountdownWindowsForm
             this.lbl_GoalNumberHeading.Text = "Goal";
             this.lbl_GoalNumberHeading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl_GoalNumberHeading.Visible = false;
-            this.lbl_GoalNumberHeading.Click += new System.EventHandler(this.lbl_GoalNumberHeading_Click);
             // 
             // txtBox_GoalNumber
             // 

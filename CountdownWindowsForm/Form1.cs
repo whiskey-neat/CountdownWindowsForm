@@ -48,12 +48,21 @@ namespace CountdownWindowsForm
                 "                                                -----------------------------" +
                 "\n" +
                 "\n" +
-                "Simply enter a username in the username box to the left and then click the 'Let's Go!' button underneath." +
+                "Step 1" +
+                "\n--------" +
+                "\nEnter a username in the Username box and then click the 'Let's Go!' button underneath." +
                 "\n" +
+                "\nStep 2" +
+                "\n--------" +
+                "\nYour numbers will appear in the left hand box. Use these numbers to try and reach the goal number on the right." +
                 "\n" +
-                "See, not so hard..." +
+                "\nStep 3" +
+                "\n--------" +
+                "\nAfter the countdown timer has finished a \"Your Submission\" box will appear. Enter the number you got to here." +
                 "\n" +
-                "..right?");
+                "\nStep 4" +
+                "\n--------" +
+                "\nThats it! Your score will be logged. Have fun :D");
         }
 
         // LETS GO BUTTON IS PRESSSED WHEN ENTER KEY IS PRESSED IN USERNAME BOX
@@ -177,22 +186,12 @@ namespace CountdownWindowsForm
             }
         }
 
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         /*----------------
         ///  Exit Button
         -----------------*/
         private void btn_ExitProgram_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
-        }
-
-        private void lbl_GoalNumberHeading_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
