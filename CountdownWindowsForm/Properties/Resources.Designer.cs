@@ -97,14 +97,5 @@ namespace CountdownWindowsForm.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string highscores_txt {
-            get {
-                return ResourceManager.GetString("highscores.txt", resourceCulture);
-            }
-        }
     }
 }

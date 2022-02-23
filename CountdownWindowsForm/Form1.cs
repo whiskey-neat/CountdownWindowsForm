@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,18 +16,18 @@ namespace CountdownWindowsForm
     public partial class form1 : Form
     {
         PlayerModel player = new PlayerModel();
+        SoundPlayer letsgo = new SoundPlayer(CountdownWindowsForm.Properties.Resources.CountdownTheme_Trim);
+        SoundPlayer timer = new SoundPlayer(CountdownWindowsForm.Properties.Resources.CountdownTheme_Full);
 
         public form1()
         {
             InitializeComponent();
         }
 
-
-        /// EXIT BUTTON
         private void btn_ExitProgram_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
-        }
+        } // EXIT BUTTON
         
 
         /// HELP BUTTON
@@ -57,16 +58,13 @@ namespace CountdownWindowsForm
                 "\nThats it! Your score will be logged. Have fun :D");
         }
 
-        /// MAIN PROGRAM
-
-        // SET EnterUsername TO EMPTY
+        
         public void empty()
         {
-            txtBox_EnterUsername.Text = "";
+            txtBox_EnterUsername.Text = ""; // SET EnterUsername TO EMPTY
         }
-
-        // LETS GO BUTTON IS PRESSSED WHEN ENTER KEY IS PRESSED IN USERNAME BOX
-        private void txtBox_UserUsername_KeyDown(object sender, KeyEventArgs e)
+        
+        private void txtBox_UserUsername_KeyDown(object sender, KeyEventArgs e) // Let's Go button is pressed when enter key is pressed
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -74,8 +72,8 @@ namespace CountdownWindowsForm
             }
         }
 
-        // SUBMIT BUTTON IS PRESSSED WHEN ENTER KEY IS PRESSED IN SUBMISSION TEXTBOX
-        private void txtBox_Submission_KeyDown_1(object sender, KeyEventArgs e)
+        
+        private void txtBox_Submission_KeyDown_1(object sender, KeyEventArgs e) // Submit button is pressed when enter key is pressed
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -94,7 +92,6 @@ namespace CountdownWindowsForm
  
                 player.Username = txtBox_EnterUsername.Text; // STORES USERNAME IN VARIABLE
 
-                SoundPlayer letsgo = new SoundPlayer(CountdownWindowsForm.Properties.Resources.CountdownTheme_Trim);
                 letsgo.Play();
 
                 lbl_currentPlayer.Text = ("GET READY ") + player.Username; // DISPLAYS NAME OF CURRENT PLAYER
@@ -154,39 +151,61 @@ namespace CountdownWindowsForm
 
                     await Task.Delay(TimeSpan.FromSeconds(2));
 
-                    SoundPlayer timer = new SoundPlayer(CountdownWindowsForm.Properties.Resources.CountdownTheme_Full);
+                   
                     timer.Play();
 
                     await Task.Delay(TimeSpan.FromSeconds(30));
                 }
 
                 ///  IF EASY DIFFICULTY IS SELECTED
-                
-
                 else if (rdBtn_Easy.Checked)
                 {
                     MessageBox.Show($" Lol, as if u wanted easy mode, loser! \n Sorry, I haven't programmed this mode yet so u better man up and go hard or go home! <3");
                 }
         }
 
-        // SUBMIT BUTTON IS PRESSSED WHEN ENTER KEY IS PRESSED IN SUBMISSION TEXTBOX
-
-        // USER SUBMITS THEIR NUMBER
-        private void btn_SubmitNum_Click(object sender, EventArgs e)
+        private void btn_SubmitNum_Click(object sender, EventArgs e) // USER PRESSES SUBMIT
         {
-            string userSub = txtBox_Submission.Text;  // STORES USER SUBMITTED NUMBER IN STRING
-            int userNumber = Int32.Parse(userSub);    // CONVERTS STRING TO USABLE INTEGER
-            int goalNumber2 = Int32.Parse(txtBox_GoalNumber.Text); // CONVERTS GOAL NUMBER BACK TO INTEGER
+            timer.Stop();
+
+            string userSub = txtBox_Submission.Text;  // STORES USER SUBMISSION
+            int userNumber = Int32.Parse(userSub);    // CONVERTS USER SUBMISSION TO USABLE INTEGER
+            int goalNumber2 = Int32.Parse(txtBox_GoalNumber.Text); // CONVERTS GOAL NUMBER TO INTEGER
             string yourScoreIs = "Your Score is: ";
 
             int highestNumber = Math.Max(userNumber, goalNumber2);
             int lowestNumber = Math.Min(userNumber, goalNumber2);
 
-            player.Score = highestNumber - lowestNumber;
+            player.Score = highestNumber - lowestNumber; //CREATES SCORE
 
-            txtBox_DisplayScore.Text = yourScoreIs + player.Score.ToString();
+            txtBox_DisplayScore.Text = yourScoreIs + player.Score.ToString(); //DISPLAYS SCORE
 
-            // List<PlayerModel> highscores = new List<PlayerModel>();
+            // WRITING THE USERNAME AND SCORE TO A FILE
+            string scoreOutput = player.Score.ToString();
+
+            string outputData = "Score: " + scoreOutput + " " + "Username: " + player.Username;
+
+            string pathToFile = @"C:\Users\chloe\Desktop\highscores.txt";
+            using (StreamWriter sw = File.AppendText(pathToFile))
+            {
+                sw.WriteLine(outputData);
+            }   
+
+        }
+
+        private void btn_ViewScores_Click(object sender, EventArgs e)
+        {
+            string pathToFile = @"C:\Users\chloe\Desktop\highscores.txt";
+
+            try
+            {
+                string fileData = File.ReadAllText(pathToFile);
+                MessageBox.Show(fileData);
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show(":( The file could not be read:" + ex.Message);
+            }
 
         }
     }

@@ -97,7 +97,7 @@
     <None Include="Resources\countdownClockSquare.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\highscores.txt" />
+    <None Include="bin\Debug\Results.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

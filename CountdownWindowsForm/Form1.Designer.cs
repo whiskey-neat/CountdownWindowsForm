@@ -35,8 +35,6 @@ namespace CountdownWindowsForm
             this.lbl_enterUsername = new System.Windows.Forms.Label();
             this.txtBox_EnterUsername = new System.Windows.Forms.TextBox();
             this.picBox_CountdownLogo = new System.Windows.Forms.PictureBox();
-            this.lbl_currentHighScore_Easy = new System.Windows.Forms.Label();
-            this.txtBox_CurrentHS = new System.Windows.Forms.TextBox();
             this.btn_LetsGo = new System.Windows.Forms.Button();
             this.btn_Welcome = new System.Windows.Forms.Label();
             this.btn_Help = new System.Windows.Forms.Button();
@@ -54,11 +52,10 @@ namespace CountdownWindowsForm
             this.rdBtn_Easy = new System.Windows.Forms.RadioButton();
             this.lbl_SelectDifficulty = new System.Windows.Forms.Label();
             this.rdBtn_Hard = new System.Windows.Forms.RadioButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lbl_currentHighScore_Hard = new System.Windows.Forms.Label();
             this.toolTip_YourSub = new System.Windows.Forms.ToolTip(this.components);
             this.txtBox_DisplayScore = new System.Windows.Forms.TextBox();
             this.btn_SubmitNum = new System.Windows.Forms.Button();
+            this.btn_ViewScores = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBox_CountdownLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,29 +91,6 @@ namespace CountdownWindowsForm
             this.picBox_CountdownLogo.Size = new System.Drawing.Size(302, 164);
             this.picBox_CountdownLogo.TabIndex = 2;
             this.picBox_CountdownLogo.TabStop = false;
-            // 
-            // lbl_currentHighScore_Easy
-            // 
-            this.lbl_currentHighScore_Easy.AutoSize = true;
-            this.lbl_currentHighScore_Easy.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_currentHighScore_Easy.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lbl_currentHighScore_Easy.Location = new System.Drawing.Point(128, 597);
-            this.lbl_currentHighScore_Easy.Name = "lbl_currentHighScore_Easy";
-            this.lbl_currentHighScore_Easy.Size = new System.Drawing.Size(248, 29);
-            this.lbl_currentHighScore_Easy.TabIndex = 3;
-            this.lbl_currentHighScore_Easy.Text = "Easy Current High Score:";
-            // 
-            // txtBox_CurrentHS
-            // 
-            this.txtBox_CurrentHS.Cursor = System.Windows.Forms.Cursors.No;
-            this.txtBox_CurrentHS.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBox_CurrentHS.Location = new System.Drawing.Point(100, 639);
-            this.txtBox_CurrentHS.MaxLength = 10;
-            this.txtBox_CurrentHS.Name = "txtBox_CurrentHS";
-            this.txtBox_CurrentHS.ReadOnly = true;
-            this.txtBox_CurrentHS.Size = new System.Drawing.Size(302, 30);
-            this.txtBox_CurrentHS.TabIndex = 4;
-            this.txtBox_CurrentHS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btn_LetsGo
             // 
@@ -324,29 +298,6 @@ namespace CountdownWindowsForm
             this.rdBtn_Hard.Text = "Hard";
             this.rdBtn_Hard.UseVisualStyleBackColor = true;
             // 
-            // textBox1
-            // 
-            this.textBox1.Cursor = System.Windows.Forms.Cursors.No;
-            this.textBox1.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(103, 734);
-            this.textBox1.MaxLength = 10;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(302, 30);
-            this.textBox1.TabIndex = 23;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lbl_currentHighScore_Hard
-            // 
-            this.lbl_currentHighScore_Hard.AutoSize = true;
-            this.lbl_currentHighScore_Hard.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_currentHighScore_Hard.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lbl_currentHighScore_Hard.Location = new System.Drawing.Point(128, 690);
-            this.lbl_currentHighScore_Hard.Name = "lbl_currentHighScore_Hard";
-            this.lbl_currentHighScore_Hard.Size = new System.Drawing.Size(248, 29);
-            this.lbl_currentHighScore_Hard.TabIndex = 22;
-            this.lbl_currentHighScore_Hard.Text = "Hard Current High Score:";
-            // 
             // txtBox_DisplayScore
             // 
             this.txtBox_DisplayScore.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -376,16 +327,27 @@ namespace CountdownWindowsForm
             this.btn_SubmitNum.Visible = false;
             this.btn_SubmitNum.Click += new System.EventHandler(this.btn_SubmitNum_Click);
             // 
+            // btn_ViewScores
+            // 
+            this.btn_ViewScores.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_ViewScores.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ViewScores.Location = new System.Drawing.Point(100, 649);
+            this.btn_ViewScores.Name = "btn_ViewScores";
+            this.btn_ViewScores.Size = new System.Drawing.Size(302, 59);
+            this.btn_ViewScores.TabIndex = 27;
+            this.btn_ViewScores.Text = "View Past Scores";
+            this.btn_ViewScores.UseVisualStyleBackColor = true;
+            this.btn_ViewScores.Click += new System.EventHandler(this.btn_ViewScores_Click);
+            // 
             // form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MidnightBlue;
             this.ClientSize = new System.Drawing.Size(1413, 802);
+            this.Controls.Add(this.btn_ViewScores);
             this.Controls.Add(this.txtBox_DisplayScore);
             this.Controls.Add(this.btn_SubmitNum);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.lbl_currentHighScore_Hard);
             this.Controls.Add(this.rdBtn_Hard);
             this.Controls.Add(this.lbl_SelectDifficulty);
             this.Controls.Add(this.rdBtn_Easy);
@@ -401,8 +363,6 @@ namespace CountdownWindowsForm
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btn_Welcome);
             this.Controls.Add(this.btn_LetsGo);
-            this.Controls.Add(this.txtBox_CurrentHS);
-            this.Controls.Add(this.lbl_currentHighScore_Easy);
             this.Controls.Add(this.picBox_CountdownLogo);
             this.Controls.Add(this.txtBox_EnterUsername);
             this.Controls.Add(this.lbl_enterUsername);
@@ -427,8 +387,6 @@ namespace CountdownWindowsForm
         private System.Windows.Forms.Label lbl_enterUsername;
         private System.Windows.Forms.TextBox txtBox_EnterUsername;
         private System.Windows.Forms.PictureBox picBox_CountdownLogo;
-        private System.Windows.Forms.Label lbl_currentHighScore_Easy;
-        private System.Windows.Forms.TextBox txtBox_CurrentHS;
         private System.Windows.Forms.Button btn_LetsGo;
         private System.Windows.Forms.Label btn_Welcome;
         private System.Windows.Forms.Button btn_Help;
@@ -446,11 +404,10 @@ namespace CountdownWindowsForm
         private System.Windows.Forms.RadioButton rdBtn_Easy;
         private System.Windows.Forms.Label lbl_SelectDifficulty;
         private System.Windows.Forms.RadioButton rdBtn_Hard;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label lbl_currentHighScore_Hard;
         private System.Windows.Forms.ToolTip toolTip_YourSub;
         private System.Windows.Forms.Button btn_SubmitNum;
         private System.Windows.Forms.TextBox txtBox_DisplayScore;
+        private System.Windows.Forms.Button btn_ViewScores;
     }
 }
 
