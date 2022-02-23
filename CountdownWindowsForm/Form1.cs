@@ -14,6 +14,8 @@ namespace CountdownWindowsForm
 {
     public partial class form1 : Form
     {
+        PlayerModel player = new PlayerModel();
+
         public form1()
         {
             InitializeComponent();
@@ -90,12 +92,12 @@ namespace CountdownWindowsForm
             if (rdBtn_Easy.Checked | rdBtn_Hard.Checked)
             {
  
-                string playerUsername = txtBox_EnterUsername.Text; // STORES USERNAME IN VARIABLE
+                player.Username = txtBox_EnterUsername.Text; // STORES USERNAME IN VARIABLE
 
                 SoundPlayer letsgo = new SoundPlayer(CountdownWindowsForm.Properties.Resources.CountdownTheme_Trim);
                 letsgo.Play();
 
-                lbl_currentPlayer.Text = ("GET READY ") + playerUsername; // DISPLAYS NAME OF CURRENT PLAYER
+                lbl_currentPlayer.Text = ("GET READY ") + player.Username; // DISPLAYS NAME OF CURRENT PLAYER
 
                 empty(); // CLEARS TEXT FROM EnterUsername BOX
 
@@ -180,21 +182,12 @@ namespace CountdownWindowsForm
             int highestNumber = Math.Max(userNumber, goalNumber2);
             int lowestNumber = Math.Min(userNumber, goalNumber2);
 
-            int userScoreInt = highestNumber - lowestNumber;
+            player.Score = highestNumber - lowestNumber;
 
-            txtBox_DisplayScore.Text = yourScoreIs + userScoreInt.ToString();
+            txtBox_DisplayScore.Text = yourScoreIs + player.Score.ToString();
 
-            /*
-            if (userNumber <= goalNumber2)
-            {
-                txtBox_DisplayScore.Text = yourScoreIs + (goalNumber2 - userNumber).ToString();
-            }
+            // List<PlayerModel> highscores = new List<PlayerModel>();
 
-            else if (goalNumber2 < userNumber)
-            {
-                txtBox_DisplayScore.Text = yourScoreIs + (userNumber - goalNumber2).ToString();
-            }
-            */
         }
     }
 }

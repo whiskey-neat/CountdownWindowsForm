@@ -8,13 +8,8 @@ namespace CountdownWindowsForm
 {
     public class PlayerModel
     {
-        public PlayerModel(int score, string username)
-        {
-            this.Score = score;
-            this.Username = username;
-        }
-
         public int Score { get; set; }
         public string Username { get; set; }
     }
+    
 }
