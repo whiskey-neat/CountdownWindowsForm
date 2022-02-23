@@ -185,7 +185,7 @@ namespace CountdownWindowsForm
 
             string outputData = "Score: " + scoreOutput + " " + "Username: " + player.Username;
 
-            string pathToFile = @"C:\Users\chloe\Desktop\highscores.txt";
+            string pathToFile = Path.Combine(Directory.GetCurrentDirectory(), "highscores.txt");
             using (StreamWriter sw = File.AppendText(pathToFile))
             {
                 sw.WriteLine(outputData);
@@ -195,7 +195,7 @@ namespace CountdownWindowsForm
 
         private void btn_ViewScores_Click(object sender, EventArgs e)
         {
-            string pathToFile = @"C:\Users\chloe\Desktop\highscores.txt";
+            string pathToFile = Path.Combine(Directory.GetCurrentDirectory(), "highscores.txt");
 
             try
             {
