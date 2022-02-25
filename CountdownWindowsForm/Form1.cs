@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -86,12 +80,16 @@ namespace CountdownWindowsForm
         
         private async void button1_Click(object sender, EventArgs e)
         {
-            ///  IF A DIFFICULTY IS SELECTED
-            if (rdBtn_Easy.Checked | rdBtn_Hard.Checked)
-            {
- 
-                player.Username = txtBox_EnterUsername.Text; // STORES USERNAME IN VARIABLE
+            player.Username = txtBox_EnterUsername.Text; // STORES USERNAME IN VARIABLE
 
+            if (string.IsNullOrEmpty(player.Username))
+            {
+                MessageBox.Show("Name can't be empty!");
+            }
+
+            ///  IF A DIFFICULTY IS SELECTED
+            else if (rdBtn_Easy.Checked | rdBtn_Hard.Checked)
+            {
                 letsgo.Play();
 
                 lbl_currentPlayer.Text = ("GET READY ") + player.Username; // DISPLAYS NAME OF CURRENT PLAYER
@@ -148,13 +146,13 @@ namespace CountdownWindowsForm
                     lbl_YourSubHeading.Visible = true;
                     txtBox_Submission.Visible = true;
                     btn_SubmitNum.Visible = true;
+                    lbl_currentPlayer.Visible = false;
 
-                    await Task.Delay(TimeSpan.FromSeconds(2));
+                    await Task.Delay(TimeSpan.FromSeconds(2));  // Wait 2 seconds before carrying on
 
-                   
                     timer.Play();
 
-                    await Task.Delay(TimeSpan.FromSeconds(30));
+                    await Task.Delay(TimeSpan.FromSeconds(30)); // Wait 30 seconds before carrying on
                 }
 
                 ///  IF EASY DIFFICULTY IS SELECTED
@@ -169,7 +167,7 @@ namespace CountdownWindowsForm
             timer.Stop();
 
             string userSub = txtBox_Submission.Text;  // STORES USER SUBMISSION
-            int userNumber = Int32.Parse(userSub);    // CONVERTS USER SUBMISSION TO USABLE INTEGER
+            int userNumber = Int32.Parse(userSub);    // CONVERTS USER SUBMISSION TO INTEGER
             int goalNumber2 = Int32.Parse(txtBox_GoalNumber.Text); // CONVERTS GOAL NUMBER TO INTEGER
             string yourScoreIs = "Your Score is: ";
 
@@ -178,7 +176,7 @@ namespace CountdownWindowsForm
 
             player.Score = highestNumber - lowestNumber; //CREATES SCORE
 
-            txtBox_DisplayScore.Text = yourScoreIs + player.Score.ToString(); //DISPLAYS SCORE
+            txtBox_DisplayScore.Text = yourScoreIs + player.Score.ToString(); //DISPLAYS SCORE ON SCREEN
 
             // WRITING THE USERNAME AND SCORE TO A FILE
             string scoreOutput = player.Score.ToString();
@@ -206,7 +204,6 @@ namespace CountdownWindowsForm
             {
                 MessageBox.Show(":( The file could not be read:" + ex.Message);
             }
-
         }
     }
 }
