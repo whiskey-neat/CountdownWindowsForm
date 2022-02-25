@@ -94,8 +94,6 @@ namespace CountdownWindowsForm
 
                 lbl_currentPlayer.Text = ("GET READY ") + player.Username; // DISPLAYS NAME OF CURRENT PLAYER
 
-                empty(); // CLEARS TEXT FROM EnterUsername BOX
-
                 await Task.Delay(TimeSpan.FromSeconds(5));
             }
        
@@ -167,23 +165,33 @@ namespace CountdownWindowsForm
             timer.Stop();
 
             string userSub = txtBox_Submission.Text;  // STORES USER SUBMISSION
-            int userNumber = Int32.Parse(userSub);    // CONVERTS USER SUBMISSION TO INTEGER
-            int goalNumber2 = Int32.Parse(txtBox_GoalNumber.Text); // CONVERTS GOAL NUMBER TO INTEGER
-            string yourScoreIs = "Your Score is: ";
 
-            int highestNumber = Math.Max(userNumber, goalNumber2);
-            int lowestNumber = Math.Min(userNumber, goalNumber2);
 
-            player.Score = highestNumber - lowestNumber; //CREATES SCORE
+            int userNumber;
+            if (int.TryParse(userSub, out userNumber)) // VALIDATING USER INPUT
+            {
+                int goalNumber2 = Int32.Parse(txtBox_GoalNumber.Text); // CONVERTS GOAL NUMBER TO INTEGER
+                string yourScoreIs = "Your Score is: ";
 
-            txtBox_DisplayScore.Text = yourScoreIs + player.Score.ToString(); //DISPLAYS SCORE ON SCREEN
+                int highestNumber = Math.Max(userNumber, goalNumber2);
+                int lowestNumber = Math.Min(userNumber, goalNumber2);
+
+                player.Score = highestNumber - lowestNumber; //CREATES SCORE
+
+                txtBox_DisplayScore.Text = yourScoreIs + player.Score.ToString(); //DISPLAYS SCORE ON SCREEN
+            }
+            
+            else
+            {
+                MessageBox.Show("Enter a number!");
+            }
 
             // WRITING THE USERNAME AND SCORE TO A FILE
             string scoreOutput = player.Score.ToString();
 
             string outputData = "Score: " + scoreOutput + " " + "Username: " + player.Username;
 
-            string pathToFile = Path.Combine(Directory.GetCurrentDirectory(), "highscores.txt");
+            string pathToFile = Path.Combine(Directory.GetCurrentDirectory(), "scores.txt");
             using (StreamWriter sw = File.AppendText(pathToFile))
             {
                 sw.WriteLine(outputData);
@@ -193,7 +201,7 @@ namespace CountdownWindowsForm
 
         private void btn_ViewScores_Click(object sender, EventArgs e)
         {
-            string pathToFile = Path.Combine(Directory.GetCurrentDirectory(), "highscores.txt");
+            string pathToFile = Path.Combine(Directory.GetCurrentDirectory(), "scores.txt");
 
             try
             {
